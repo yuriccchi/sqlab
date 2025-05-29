@@ -76,7 +76,10 @@ const TrainerPage = () => {
         const isCorrect = compareResults(userResult.data, referenceResult.data);
         
         setQueryResult(userResult.data);
-        setSolutionStatus(isCorrect ? "Решение верное!" : "Решение неверное");
+        setSolutionStatus({
+            message: isCorrect ? "Решение верное!" : "Решение неверное",
+            type: isCorrect ? "success" : "error"
+        });
         
         if (isCorrect && user) {
             await supabase

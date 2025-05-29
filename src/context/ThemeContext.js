@@ -10,17 +10,28 @@ export function ThemeProvider({ children }) {
     return storedTheme ? storedTheme : "light";
   });
 
-  // useEffect для сохранения темы в localStorage и обновления классов body
-  useEffect(() => {
-    localStorage.setItem("theme", theme);
-
-    if (theme === "dark") {
+  // Функция для применения темы
+  const applyTheme = (themeName) => {
+    if (themeName === "dark") {
       document.body.classList.add("dark-theme");
       document.body.classList.remove("light-theme");
     } else {
       document.body.classList.add("light-theme");
       document.body.classList.remove("dark-theme");
     }
+  };
+
+  // При монтировании компонента применяем тему из localStorage
+  useEffect(() => {
+    const storedTheme = localStorage.getItem("theme");
+    const initialTheme = storedTheme ? storedTheme : "light";
+    applyTheme(initialTheme);
+  }, []);
+
+  // useEffect для сохранения темы в localStorage и обновления классов body
+  useEffect(() => {
+    localStorage.setItem("theme", theme);
+    applyTheme(theme);
   }, [theme]);
 
   // Функция для переключения темы

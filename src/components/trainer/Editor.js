@@ -48,11 +48,11 @@ const Editor = ({ onExecute, onCheckSolution, solutionStatus }) => {
                 </div>
 
                 {solutionStatus && (
-                    <div className={`solution-status ${solutionStatus.includes('верное') ? 'success' : 'error'}`}>
-                        {solutionStatus}
+                    <div className={`solution-status ${solutionStatus.type}`}>
+                        {solutionStatus.message}
                     </div>
                 )}
-            </div>
+            </div> 
         </div>
     );
 };
