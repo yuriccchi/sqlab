@@ -1,6 +1,6 @@
 import { useRef } from "react";
 
-const Editor = ({ onExecute, onCheckSolution, task, userId, solutionStatus }) => {
+const Editor = ({ onExecute, onCheckSolution, solutionStatus }) => {
     const editorTextAreaRef = useRef(null);
     
     const handleExecuteClick = () => {
