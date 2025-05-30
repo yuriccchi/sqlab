@@ -1267,3 +1267,67 @@
   .footer-link:hover {
     text-decoration: underline;
   }
+
+  /* Стили для последовательного урока */
+  .lesson-content {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+  }
+
+  .theory-block,
+  .theory-practice-block,
+  .practice-block {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+    color: var(--primary);
+    margin-bottom: 0.5rem;
+  }
+
+  /* Стили для примеров кода в уроках */
+  .lesson-code-example {
+    position: relative;
+    width: 100%;
+    margin: 1.5rem 0;
+    overflow: hidden;
+    border-radius: var(--radius);
+    border: 1px solid var(--border);
+    background-color: var(--card);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  }
+
+  .lesson-code-block {
+    display: block;
+    width: 100%;
+    padding: 1.5rem;
+    margin: 0;
+    overflow-x: auto;
+    border-radius: var(--radius);
+    background-color: var(--blue-50);
+    font-family: "Menlo", "Monaco", "Courier New", monospace;
+    font-size: 0.9375rem;
+    line-height: 1.5;
+    color: var(--blue-800);
+    white-space: pre;
+    tab-size: 2;
+  }
+
+  .dark-theme .lesson-code-block {
+    background-color: rgba(23, 37, 84, 0.3);
+    color: var(--blue-300);
+  }
+
+  /* Для комментариев в коде (опционально) */
+  .lesson-code-block .comment {
+    color: #6a9955;
+  }
+
+  .dark-theme .lesson-code-block .comment {
+    color: #57a64a;
+  }
+
