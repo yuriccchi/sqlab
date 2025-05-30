@@ -1,17 +1,19 @@
-import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import { ReactComponent as SunIcon } from './sun-icon.svg';
 import { ReactComponent as MoonIcon } from './moon-icon.svg';
-import { useAuth } from '../../context/AuthContext'; // Импортируем контекст
+import { useAuth } from '../../context/AuthContext';
+import { ThemeContext } from '../../context/ThemeContext';
+import { useContext } from 'react';
 
 const Header = () => {
   const { user, loading } = useAuth(); // Получаем данные из контекста
-  const toggleTheme = () => {
-    document.body.classList.toggle('dark-theme');
-    document.body.classList.toggle('light-theme');
+  const  { theme, setTheme } = useContext(ThemeContext);
+
+  const changeTheme = () => {
+    setTheme(theme === "light-theme" ? "dark-theme" : "light-theme");
   };
 
-  if (loading) return null; // Или индикатор загрузки
+  if (loading) return null;
 
   return (
     <header className="header">
@@ -50,7 +52,7 @@ const Header = () => {
         <div className="header-actions">
           <button 
             className="theme-toggle" 
-            onClick={toggleTheme} 
+            onClick={changeTheme} 
             aria-label="Переключить тему"
           >
             <SunIcon className="sun-icon" />
