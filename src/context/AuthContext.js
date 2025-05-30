@@ -8,14 +8,16 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const session = supabase.auth.getSession();
-    
-    setUser(session?.user ?? null);
-    setLoading(false);
+    const loadSession = async () => {
+      const { data: { session } } = await supabase.auth.getSession(); // <- await!
+      setUser(session?.user ?? null);
+      setLoading(false);
+    };
+
+    loadSession();
 
     const { data: { subscription } } = supabase.auth.onAuthStateChange((event, session) => {
       setUser(session?.user ?? null);
-      setLoading(false);
     });
 
     return () => subscription.unsubscribe();

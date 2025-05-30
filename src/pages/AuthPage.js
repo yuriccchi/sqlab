@@ -82,9 +82,7 @@ const AuthPage = () => {
                     
                     <hr className="auth-divider" />
                     
-                    <div className="auth-links">
-                        <Link to="/forgot-password" className="text-primary">Забыли пароль?</Link>
-                    
+                    <div className="auth-links">                    
                         <div className="auth-link-group">
                             <span className="auth-text">Нет аккаунта? </span>
                             <Link to="/register" className="text-primary">Зарегистрироваться!</Link>
@@ -97,3 +95,5 @@ const AuthPage = () => {
 };
 
 export default AuthPage;
+
+// <Link to="/forgot-password" className="text-primary">Забыли пароль?</Link>

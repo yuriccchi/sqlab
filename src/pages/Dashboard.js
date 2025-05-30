@@ -5,14 +5,16 @@ import DashboardProgress from "../components/dashboard/DashboardProgress";
 import DashboardProfile from "../components/dashboard/DashboardProfile";
 
 const Dashboard = () => {
-  const { user } = useAuth();
+  const { user, loading } = useAuth();
   const navigate = useNavigate();
 
   useEffect(() => {
     if (!user) {    
       navigate('/login');
     }
-  }, [user, navigate]);
+  }, [user, loading, navigate]);
+
+  if (loading || !user) return <div>Loading...</div>;
 
   return (
     <main className="main-content">

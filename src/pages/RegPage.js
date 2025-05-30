@@ -32,7 +32,7 @@ const RegPage = () => {
         formData.username
       );
       setSuccess(true);
-      setTimeout(() => navigate('/login'), 2000);
+      setTimeout(() => navigate('/dashboard'), 2000);
     } catch (err) {
       setError(err.message);
     } finally {
